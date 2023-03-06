@@ -130,15 +130,14 @@ public class SistemaDeBatalha : MonoBehaviour
                 yield return new WaitForSeconds(1f);
                 yield return caixaDeDilalogo.EscritaDilalogo("Escolha uma ação");
                 yield return new WaitForSeconds(1f);
-                PlayerAction
+                PlayerAction();
             }
             else
             {
                 FimBatalha(true);
             }
             
-
-            FimBatalha(true);
+        
         }
         else
         {
