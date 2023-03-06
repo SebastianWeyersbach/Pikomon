@@ -87,19 +87,6 @@ public class SistemaDeBatalha : MonoBehaviour
             unidadeInimigo.MostrarAnimacaoMorte();
 
             yield return new WaitForSeconds(1.5f);
-
-            var ProximoPikomon = bondePlayer.BichosSaudaveis();
-            if (ProximoPikomon != null)
-            {
-                unidadePlayer.Setup(ProximoPikomon);
-                HUD_player.SetData(ProximoPikomon);
-
-                caixaDeDilalogo.SetarNomesdeEscolha(ProximoPikomon.Movimentos);
-            }
-            else
-            {
-                FimBatalha(true);
-            }
             FimBatalha(true);
          
         }
@@ -131,6 +118,25 @@ public class SistemaDeBatalha : MonoBehaviour
             unidadePlayer.MostrarAnimacaoMorte();
 
             yield return new WaitForSeconds(1.5f);
+            var ProximoPikomon = bondePlayer.BichosSaudaveis();
+            if (ProximoPikomon != null)
+            {
+                unidadePlayer.Setup(ProximoPikomon);
+                HUD_player.SetData(ProximoPikomon);
+
+                caixaDeDilalogo.SetarNomesdeEscolha(ProximoPikomon.Movimentos);
+
+                yield return caixaDeDilalogo.EscritaDilalogo($"{ProximoPikomon.Base.Nome}, eu escolho você!");
+                yield return new WaitForSeconds(1f);
+                yield return caixaDeDilalogo.EscritaDilalogo("Escolha uma ação");
+                yield return new WaitForSeconds(1f);
+                PlayerAction
+            }
+            else
+            {
+                FimBatalha(true);
+            }
+            
 
             FimBatalha(true);
         }
