@@ -9,6 +9,10 @@ public class UI_DoBonde : MonoBehaviour
     [SerializeField] Text textoNivel;
     [SerializeField] Text textoVida;
     [SerializeField] HpBar hpBar;
+    [SerializeField] Image seletor;
+
+    [SerializeField] Color CorDestaque;
+    [SerializeField] Color CorNormal;
 
     Pikomon _pikomon;
 
@@ -20,4 +24,17 @@ public class UI_DoBonde : MonoBehaviour
         textoVida.text = pikomon.HP.ToString();
         hpBar.DefinirVida((float)pikomon.HP / pikomon.MaxHP);
     }
+
+    public void SetarSelecionado(bool selecionado)
+    {
+        if (selecionado)
+        {
+            textoNome.color = CorDestaque;
+        }
+        else
+        {
+
+        }
+    }
+
 }
