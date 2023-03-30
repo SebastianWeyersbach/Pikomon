@@ -490,9 +490,9 @@ MonoBehaviour:
   textoNivel: {fileID: 4811872921507305138}
   textoVida: {fileID: 3649235167809239715}
   hpBar: {fileID: 6258948116156452405}
-  seletor: {fileID: 0}
-  CorDestaque: {r: 0, g: 0, b: 0, a: 0}
-  CorNormal: {r: 0, g: 0, b: 0, a: 0}
+  seletor: {fileID: 5204329597094329584}
+  CorDestaque: {r: 1, g: 0, b: 0, a: 1}
+  CorNormal: {r: 0.14117648, g: 0.09019608, b: 0, a: 1}
 --- !u!1 &6290034300414618957
 GameObject:
   m_ObjectHideFlags: 0

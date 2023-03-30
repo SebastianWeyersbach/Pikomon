@@ -173,7 +173,7 @@ PrefabInstance:
     - target: {fileID: 2083402434214033671, guid: cb16276e87b176f48b6815fd0d30a3e6,
         type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2083402434214033671, guid: cb16276e87b176f48b6815fd0d30a3e6,
         type: 3}
@@ -1077,7 +1077,7 @@ PrefabInstance:
     - target: {fileID: 2083402434214033671, guid: cb16276e87b176f48b6815fd0d30a3e6,
         type: 3}
       propertyPath: m_RootOrder
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2083402434214033671, guid: cb16276e87b176f48b6815fd0d30a3e6,
         type: 3}
@@ -2151,7 +2151,7 @@ PrefabInstance:
     - target: {fileID: 2083402434214033671, guid: cb16276e87b176f48b6815fd0d30a3e6,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -290.0003
+      value: -290.00034
       objectReference: {fileID: 0}
     - target: {fileID: 2083402434214033671, guid: cb16276e87b176f48b6815fd0d30a3e6,
         type: 3}
@@ -2862,8 +2862,8 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 427665574}
   - {fileID: 84239077}
+  - {fileID: 427665574}
   - {fileID: 834911319}
   - {fileID: 734360378}
   - {fileID: 1511927576}
@@ -3222,7 +3222,7 @@ PrefabInstance:
     - target: {fileID: 2083402434214033671, guid: cb16276e87b176f48b6815fd0d30a3e6,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -290.00018
+      value: -290.0002
       objectReference: {fileID: 0}
     - target: {fileID: 2083402434214033671, guid: cb16276e87b176f48b6815fd0d30a3e6,
         type: 3}
@@ -4446,13 +4446,14 @@ GameObject:
   - component: {fileID: 1599519851}
   - component: {fileID: 1599519853}
   - component: {fileID: 1599519852}
+  - component: {fileID: 1599519854}
   m_Layer: 0
   m_Name: TelaDoBonde
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1599519851
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4510,6 +4511,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1599519850}
   m_CullTransparentMesh: 0
+--- !u!114 &1599519854
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1599519850}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d4fe5e94ff9fb5f4e9cb58ca6e38f05e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MensagemDeTexto: {fileID: 0}
+  EspacoMembros: []
 --- !u!1 &1616986448
 GameObject:
   m_ObjectHideFlags: 0
