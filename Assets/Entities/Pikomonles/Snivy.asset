@@ -14,14 +14,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nome: Snivy
   descricao: 
-  spriteFrente: {fileID: 21300000, guid: 4aae36c1e4568cf459dc09a535350db4, type: 3}
+  spriteFrente: {fileID: 21300000, guid: b07e45c8084cd254b88eb6fb05756dcd, type: 3}
   spriteAtras: {fileID: 21300000, guid: 4aae36c1e4568cf459dc09a535350db4, type: 3}
   AnimacaoGlobal: {fileID: 0}
   maxHp: 45
   ataque: 45
   defesa: 55
-  VelocidadeATK: 45
-  VelocidadeDF: 55
+  ATKespecial: 0
+  DFespecial: 0
   velocidade: 63
   tipo1: 5
   tipo2: 0

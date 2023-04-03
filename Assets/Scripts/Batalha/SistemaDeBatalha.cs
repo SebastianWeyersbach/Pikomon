@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-public enum EstadoDeBatalha{ Iniciar, EscolhaJogador, AcaoJogador, AcaoInimigo, Esperar}
+public enum EstadoDeBatalha{ Iniciar, EscolhaJogador, AcaoJogador, AcaoInimigo, Esperar, TelaDoBonde}
 
 //LEMBRAR QUE NO CÓDIGO DO THIAGO O "AÇÃOJOGADOR" É "PLAYER ACTION" E "ESCOLHAJOGADOR" É "PLAYERMOVE"   
 
@@ -14,12 +14,14 @@ public class SistemaDeBatalha : MonoBehaviour
     [SerializeField] HUDBatalha HUD_inimigo;
     [SerializeField] HUDBatalha HUD_player;
     [SerializeField] CaixaDeDilalogoBatalha caixaDeDilalogo;
+    [SerializeField] TelaDoBonde telaDoBonde;
 
     public event Action<bool> FimBatalha;
 
     EstadoDeBatalha estado;
     int acaoAtual;
     int EscolhaAtual;
+    int PassageiroAtual;
 
     Bonde bondePlayer;
     Pikomon PikomonSelvagem;
@@ -40,6 +42,8 @@ public class SistemaDeBatalha : MonoBehaviour
         unidadeInimigo.Setup(PikomonSelvagem);
         HUD_player.SetData(unidadePlayer.Pikomon);
         HUD_inimigo.SetData(unidadeInimigo.Pikomon);
+
+        telaDoBonde.Inicializacao();
 
         caixaDeDilalogo.SetarNomesdeEscolha(unidadePlayer.Pikomon.Movimentos);
     
@@ -62,6 +66,13 @@ public class SistemaDeBatalha : MonoBehaviour
         caixaDeDilalogo.LigarSelecaoDeAcao(false);
         caixaDeDilalogo.LigarTextoDeDilalogo(false);
         caixaDeDilalogo.LigarSeletorDeEscolha(true);
+    }
+
+    void TelaDoBonde()
+    {
+        estado = EstadoDeBatalha.TelaDoBonde;
+        telaDoBonde.InfoBonde(bondePlayer.Pikomons);
+        telaDoBonde.gameObject.SetActive(true);
     }
 
     IEnumerator RealizarAEscolha()
@@ -246,6 +257,10 @@ public class SistemaDeBatalha : MonoBehaviour
             {
                 PlayerMove();
             }
+            if(acaoAtual == 2)
+            {
+                TelaDoBonde();
+            }
         }
     }
 
@@ -289,4 +304,31 @@ public class SistemaDeBatalha : MonoBehaviour
         }
     }
 
+    void LigarInspetorDoBonde()
+    {
+        if (Input.GetKeyDown(KeyCode.DownArrow))
+        {
+            if(PassageiroAtual == 2)
+            {
+                PassageiroAtual = 2;
+            }
+            else if(PassageiroAtual >= 0 && PassageiroAtual < 5)
+            {
+                PassageiroAtual++;
+            }
+        }
+
+        if (Input.GetKeyDown(KeyCode.UpArrow))
+        {
+            if(PassageiroAtual == 3)
+            {
+                PassageiroAtual = 3;
+            }
+            else if (PassageiroAtual > 0 && PassageiroAtual >=5)
+            {
+                PassageiroAtual--;
+            }
+        }
+    }
+    
 }

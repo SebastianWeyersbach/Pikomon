@@ -8,6 +8,8 @@ public class Bonde : MonoBehaviour
 
     [SerializeField] List<Pikomon> pikomons;
 
+    public List<Pikomon> Pikomons { get { return pikomons; } }
+
     private void Start()
     {
         foreach(var pikomon in pikomons)

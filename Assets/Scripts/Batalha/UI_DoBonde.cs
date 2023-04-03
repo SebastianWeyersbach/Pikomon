@@ -10,6 +10,7 @@ public class UI_DoBonde : MonoBehaviour
     [SerializeField] Text textoVida;
     [SerializeField] HpBar hpBar;
     [SerializeField] Image seletor;
+    [SerializeField] Image imagemPassageiro;
 
     [SerializeField] Color CorDestaque;
     [SerializeField] Color CorNormal;
@@ -19,6 +20,7 @@ public class UI_DoBonde : MonoBehaviour
     public void SetData(Pikomon pikomon)
     {
         _pikomon = pikomon;
+        imagemPassageiro.sprite = pikomon.Base.Spritefrente;
         textoNome.text = pikomon.Base.Nome;
         textoNivel.text = $"Nv {pikomon.nivel}";
         textoVida.text = pikomon.HP.ToString();

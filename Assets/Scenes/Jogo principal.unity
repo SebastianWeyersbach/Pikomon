@@ -2868,6 +2868,7 @@ RectTransform:
   - {fileID: 734360378}
   - {fileID: 1511927576}
   - {fileID: 1131440489}
+  - {fileID: 1700958371}
   m_Father: {fileID: 1599519851}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3126,7 +3127,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Pokemons
+  m_Text: Pikomons
 --- !u!1001 &1131440488
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4453,7 +4454,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1599519851
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4523,7 +4524,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d4fe5e94ff9fb5f4e9cb58ca6e38f05e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MensagemDeTexto: {fileID: 0}
+  MensagemDeTexto: {fileID: 1700958372}
   EspacoMembros: []
 --- !u!1 &1616986448
 GameObject:
@@ -4795,6 +4796,84 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1700958370
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1700958371}
+  - component: {fileID: 1700958373}
+  - component: {fileID: 1700958372}
+  m_Layer: 0
+  m_Name: TextoMsg
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1700958371
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1700958370}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1.0000798, y: 1.0000798, z: 1.0000798}
+  m_Children: []
+  m_Father: {fileID: 1047930473}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 5.0206, y: -482}
+  m_SizeDelta: {x: 1404.1511, y: 115.80719}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1700958372
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1700958370}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 0.9677419, b: 0, a: 1}
+  m_RaycastTarget: 1
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 60
+    m_FontStyle: 0
+    m_BestFit: 1
+    m_MinSize: 0
+    m_MaxSize: 60
+    m_Alignment: 1
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: Selecione seu Pikomon
+--- !u!222 &1700958373
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1700958370}
+  m_CullTransparentMesh: 0
 --- !u!1 &1711010005
 GameObject:
   m_ObjectHideFlags: 0
@@ -5370,7 +5449,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1829471280
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5522,6 +5601,7 @@ MonoBehaviour:
   HUD_inimigo: {fileID: 1134535316}
   HUD_player: {fileID: 1088923842}
   caixaDeDilalogo: {fileID: 1756917261}
+  telaDoBonde: {fileID: 1599519854}
 --- !u!1 &2081868444
 GameObject:
   m_ObjectHideFlags: 0
