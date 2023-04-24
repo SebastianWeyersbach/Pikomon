@@ -14,14 +14,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nome: Pidove
   descricao: 
-  spriteFrente: {fileID: 21300000, guid: 13a75cf3d65f61347a30fc1ba61c9d7e, type: 3}
+  spriteFrente: {fileID: 21300000, guid: 552fccde5e9ace848a2ff10ba5b4bb46, type: 3}
   spriteAtras: {fileID: 21300000, guid: 13a75cf3d65f61347a30fc1ba61c9d7e, type: 3}
   AnimacaoGlobal: {fileID: 0}
   maxHp: 50
   ataque: 55
   defesa: 50
-  VelocidadeATK: 36
-  VelocidadeDF: 30
+  ATKespecial: 0
+  DFespecial: 0
   velocidade: 43
   tipo1: 1
   tipo2: 10

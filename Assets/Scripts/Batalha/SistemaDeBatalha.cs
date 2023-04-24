@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-public enum EstadoDeBatalha{ Iniciar, EscolhaJogador, AcaoJogador, AcaoInimigo, Esperar, TelaDoBonde}
+public enum EstadoDeBatalha{ Iniciar, EscolhaJogador, AcaoJogador, AcaoInimigo, Ocupado, TelaDoBonde}
 
 //LEMBRAR QUE NO CÓDIGO DO THIAGO O "AÇÃOJOGADOR" É "PLAYER ACTION" E "ESCOLHAJOGADOR" É "PLAYERMOVE"   
 
@@ -77,7 +77,7 @@ public class SistemaDeBatalha : MonoBehaviour
 
     IEnumerator RealizarAEscolha()
     {
-        estado = EstadoDeBatalha.Esperar;
+        estado = EstadoDeBatalha.Ocupado;
         HUD_inimigo.ContadorDeHPparte1();
         var escolha = unidadePlayer.Pikomon.Movimentos[EscolhaAtual];
         escolha.PowerPoint--;
@@ -109,7 +109,7 @@ public class SistemaDeBatalha : MonoBehaviour
 
     IEnumerator RealizarAEscolhaInimiga()
     {
-        estado = EstadoDeBatalha.Esperar;
+        estado = EstadoDeBatalha.Ocupado;
         var escolha = unidadeInimigo.Pikomon.MovimentoAleatorio();
         escolha.PowerPoint--;
         yield return caixaDeDilalogo.EscritaDilalogo($"{unidadeInimigo.Pikomon.Base.Nome} usou {escolha.Base.Nome}");
@@ -183,6 +183,10 @@ public class SistemaDeBatalha : MonoBehaviour
         if (estado == EstadoDeBatalha.EscolhaJogador)
         {
             LigarSeletorDeEscolha();
+        }
+        if (estado == EstadoDeBatalha.TelaDoBonde)
+        {
+            LigarInspetorDoBonde();
         }
     }
 
@@ -308,11 +312,7 @@ public class SistemaDeBatalha : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.DownArrow))
         {
-            if(PassageiroAtual == 2)
-            {
-                PassageiroAtual = 2;
-            }
-            else if(PassageiroAtual >= 0 && PassageiroAtual < 5)
+            if(PassageiroAtual >= 0 && PassageiroAtual < bondePlayer.Pikomons.Count - 1)
             {
                 PassageiroAtual++;
             }
@@ -320,15 +320,73 @@ public class SistemaDeBatalha : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.UpArrow))
         {
-            if(PassageiroAtual == 3)
-            {
-                PassageiroAtual = 3;
-            }
-            else if (PassageiroAtual > 0 && PassageiroAtual >=5)
+            if(PassageiroAtual > 0)
             {
                 PassageiroAtual--;
             }
+
+        }
+
+        if (Input.GetKeyDown(KeyCode.RightArrow))
+        {
+            if (PassageiroAtual < 3)
+            {
+                PassageiroAtual += 3; 
+            }
+
+        }
+
+        if (Input.GetKeyDown(KeyCode.LeftArrow))
+        {
+            if(PassageiroAtual > 2)
+            {
+                PassageiroAtual -= 3;
+            }
+        }
+
+        telaDoBonde.AtualizarBonde(PassageiroAtual);
+
+        if (Input.GetKeyUp(KeyCode.Z))
+        {
+            var PassageiroEscolhido = bondePlayer.Pikomons[PassageiroAtual];
+            if(PassageiroEscolhido.HP <= 0)
+            {
+                telaDoBonde.MudarMensagemDeTexto($"{PassageiroEscolhido.Base.Nome} está indisponível.");
+                return;
+            }
+            if(PassageiroEscolhido == unidadePlayer.Pikomon)
+            {
+                telaDoBonde.MudarMensagemDeTexto($"{PassageiroEscolhido.Base.Nome} já está em combate!");
+                return;
+            }
+
+            telaDoBonde.gameObject.SetActive(false);
+            estado = EstadoDeBatalha.Ocupado;
+            StartCoroutine(TrocarPikomon(PassageiroEscolhido));
+
+        }
+
+        if (Input.GetKeyDown(KeyCode.C) || Input.GetKeyDown(KeyCode.Escape))
+        {
+            telaDoBonde.gameObject.SetActive(false);
+            PlayerAction();
         }
     }
     
+    IEnumerator TrocarPikomon(Pikomon novoPikomon)
+    {
+        yield return caixaDeDilalogo.EscritaDilalogo($"{unidadePlayer.Pikomon.Base.Nome}, volta!");
+        unidadePlayer.MostrarAnimacaoMorte();
+        yield return new WaitForSeconds(1.5f);
+
+        unidadePlayer.Setup(novoPikomon);
+        HUD_player.SetData(novoPikomon);
+        caixaDeDilalogo.SetarNomesdeEscolha(novoPikomon.Movimentos);
+
+        yield return caixaDeDilalogo.EscritaDilalogo($"Vai {novoPikomon.Base.Nome}!");
+
+        StartCoroutine(RealizarAEscolhaInimiga());
+
+    }
+
 }

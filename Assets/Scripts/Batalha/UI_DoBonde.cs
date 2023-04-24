@@ -31,11 +31,11 @@ public class UI_DoBonde : MonoBehaviour
     {
         if (selecionado)
         {
-            textoNome.color = CorDestaque;
+            seletor.color = CorDestaque;
         }
         else
-        {
-
+        { 
+            seletor.color = CorNormal;
         }
     }
 

@@ -28,6 +28,7 @@ public class TelaDoBonde : MonoBehaviour
                 EspacoMembros[i].gameObject.SetActive(false);
             }
         }
+        MensagemDeTexto.text = "Escolha um Pikomon";
     }
 
     public void AtualizarBonde(int membroSelecionado)
@@ -44,4 +45,10 @@ public class TelaDoBonde : MonoBehaviour
             }
         }
     }
+
+    public void MudarMensagemDeTexto(string mensagem)
+    {
+        MensagemDeTexto.text = mensagem;
+    }
+
 }
