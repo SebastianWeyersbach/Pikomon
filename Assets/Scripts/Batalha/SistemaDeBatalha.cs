@@ -22,6 +22,7 @@ public class SistemaDeBatalha : MonoBehaviour
     int acaoAtual;
     int EscolhaAtual;
     int PassageiroAtual;
+    int TentativaDeFuga;
 
     Bonde bondePlayer;
     Pikomon PikomonSelvagem;
@@ -265,6 +266,14 @@ public class SistemaDeBatalha : MonoBehaviour
             {
                 TelaDoBonde();
             }
+            if(acaoAtual == 1)
+            {
+                //Mochila
+            }
+            if(acaoAtual == 3)
+            {
+                //Correr
+            }
         }
     }
 
@@ -389,4 +398,9 @@ public class SistemaDeBatalha : MonoBehaviour
 
     }
 
+    IEnumerator TentativaDeFuga()
+    {
+        estado = EstadoDeBatalha.Ocupado;
+        CaixaDeDilalogo.LigarTextoDeDilalogo(true);
+    }
 }

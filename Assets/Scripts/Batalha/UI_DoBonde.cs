@@ -24,6 +24,18 @@ public class UI_DoBonde : MonoBehaviour
         textoNome.text = pikomon.Base.Nome;
         textoNivel.text = $"Nv {pikomon.nivel}";
         textoVida.text = pikomon.HP.ToString();
+        if(pikomon.HP <= 9)
+        {
+            textoVida.text = $"00{pikomon.HP}";
+        }
+        else if(pikomon.HP <= 99) 
+        {
+            textoVida.text = $"0{pikomon.HP}";
+        }
+        else
+        {
+            textoVida.text = pikomon.HP.ToString();
+        }
         hpBar.DefinirVida((float)pikomon.HP / pikomon.MaxHP);
     }
 

@@ -18,37 +18,27 @@ public class HUDBatalha : MonoBehaviour
         _pikomon = pikomon;
         nomeTexto.text = pikomon.Base.Nome;
         nivelTexto.text = "Nv" + pikomon.nivel;
-        barraVida.DefinirVida((float)pikomon.HP / pikomon.MaxHP);
-        /*if(_pikomon.HP < 100 && _pikomon.HP > 9)
+        if(pikomon.HP <= 9)
         {
-            TextoHP.text = "0" + _pikomon.HP.ToString();
+            TextoHP.text = $"00{pikomon.HP}";
         }
-        else if(_pikomon.HP < 10)
+        else if(pikomon.HP <= 99)
         {
-            TextoHP.text = "00" + _pikomon.HP.ToString();
+            TextoHP.text = $"0{pikomon.HP}";
         }
         else
         {
-            TextoHP.text = _pikomon.HP.ToString();
-        }*/
+            TextoHP.text = pikomon.HP.ToString();
+        }
+        barraVida.DefinirVida((float)pikomon.HP / pikomon.MaxHP);
+       
     }
 
     public IEnumerator AtualizarHP()
     {
         StartCoroutine(ContadorDeHPparte2());
         yield return barraVida.SuavizacaoDeHP((float)_pikomon.HP / _pikomon.MaxHP);
-        /*if (_pikomon.HP < 100 && _pikomon.HP > 9)
-        {
-            TextoHP.text = "0" + _pikomon.HP.ToString();
-        }
-        else if (_pikomon.HP < 10)
-        {
-            TextoHP.text = "00" + _pikomon.HP.ToString();
-        }
-        else
-        {
-            //TextoHP.text = _pikomon.HP.ToString();
-        }*/
+                                                                                                                    
     }
 
     public void ContadorDeHPparte1()
@@ -62,10 +52,35 @@ public class HUDBatalha : MonoBehaviour
         while(HpAnterior > HPAtual)
         {
             HpAnterior -= 1;
-            TextoHP.text = HpAnterior.ToString();
+            if (HpAnterior <= 9)
+            {
+                TextoHP.text = $"00{HpAnterior}";
+            }
+            else if(HpAnterior <= 99)
+            {
+                TextoHP.text = $"0{HpAnterior}";
+            }
+            else
+            {
+                TextoHP.text = HpAnterior.ToString();
+            }
             yield return new WaitForSeconds(0.125f);
         }
         HpAnterior = _pikomon.HP;
+        TextoHP.text = _pikomon.HP.ToString();
+
+        if (_pikomon.HP <= 9)
+        {
+            TextoHP.text = $"00{_pikomon.HP}";
+        }
+        else if (_pikomon.HP <= 99)
+        {
+            TextoHP.text = $"0{_pikomon.HP}";
+        }
+        else
+        {
+            TextoHP.text = _pikomon.HP.ToString();
+        }
     }
 }
 
