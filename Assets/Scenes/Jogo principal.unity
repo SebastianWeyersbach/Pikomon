@@ -501,15 +501,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PikomonsSelvagens:
   - _base: {fileID: 11400000, guid: d1b67634553499b448a11d80290c3692, type: 2}
-    level: 1
+    level: 10
   - _base: {fileID: 11400000, guid: d1b67634553499b448a11d80290c3692, type: 2}
-    level: 2
+    level: 20
   - _base: {fileID: 11400000, guid: d1b67634553499b448a11d80290c3692, type: 2}
-    level: 3
+    level: 30
   - _base: {fileID: 11400000, guid: d1b67634553499b448a11d80290c3692, type: 2}
-    level: 4
+    level: 40
   - _base: {fileID: 11400000, guid: d1b67634553499b448a11d80290c3692, type: 2}
-    level: 5
+    level: 50
 --- !u!1 &179809604
 GameObject:
   m_ObjectHideFlags: 0

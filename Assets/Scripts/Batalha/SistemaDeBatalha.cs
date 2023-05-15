@@ -22,7 +22,7 @@ public class SistemaDeBatalha : MonoBehaviour
     int acaoAtual;
     int EscolhaAtual;
     int PassageiroAtual;
-    int TentativaDeFuga;
+    int TentativasDeFuga;
 
     Bonde bondePlayer;
     Pikomon PikomonSelvagem;
@@ -272,7 +272,7 @@ public class SistemaDeBatalha : MonoBehaviour
             }
             if(acaoAtual == 3)
             {
-                //Correr
+                StartCoroutine(TentativaDeFuga());
             }
         }
     }
@@ -401,6 +401,34 @@ public class SistemaDeBatalha : MonoBehaviour
     IEnumerator TentativaDeFuga()
     {
         estado = EstadoDeBatalha.Ocupado;
-        CaixaDeDilalogo.LigarTextoDeDilalogo(true);
+        caixaDeDilalogo.LigarTextoDeDilalogo(true);
+        yield return null;
+
+        TentativasDeFuga++;
+        int velocidadePlayer = unidadePlayer.Pikomon.Velocidade;
+        int velocidadeInimigo = unidadeInimigo.Pikomon.Velocidade;
+
+        if(velocidadeInimigo < velocidadePlayer)
+        {
+            yield return caixaDeDilalogo.EscritaDilalogo("Você escapou!");
+            FimBatalha(true);
+        }
+        else
+        {
+            float escaparSorte = ((velocidadePlayer * 128) / velocidadeInimigo + 30 * TentativasDeFuga) % 256;
+            Debug.Log($"O resto é: {escaparSorte}");
+
+            if(UnityEngine.Random.Range(0, 255) < escaparSorte)
+            {
+                yield return caixaDeDilalogo.EscritaDilalogo("Você escapou!");
+                FimBatalha(true);
+            }
+            else
+            {
+                yield return caixaDeDilalogo.EscritaDilalogo("Você não conseguiu escapar!");
+                StartCoroutine(RealizarAEscolhaInimiga());
+            }
+        }
+
     }
 }
