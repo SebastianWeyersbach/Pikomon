@@ -13,6 +13,7 @@ public class Joojador : MonoBehaviour
     [SerializeField] bool emMovimento;
     [SerializeField] float[] HoraDeEncontro = new float[2];
     [SerializeField] float timer;
+    public LayerMask layerInteragivel;
 
     public event Action NoEncontro;
 
@@ -82,6 +83,24 @@ public class Joojador : MonoBehaviour
         {
             anim.SetBool("IsMoving", true);
             emMovimento = true;
+        }
+        if (Input.GetKeyDown(KeyCode.Z))
+        {
+            interagir();
+        }
+    }
+
+    void interagir()
+    {
+        var direface = new Vector3(anim.GetFloat("Horizontal")*-1f, 0, anim.GetFloat("Vertical")*-1f);
+        var PosInteracao = transform.position + direface;
+
+        Debug.DrawLine(transform.position, PosInteracao, Color.cyan, 1f);
+
+        var colisores = Physics.OverlapSphere(PosInteracao, 0.3f, layerInteragivel);
+        if(colisores != null)
+        {
+            Debug.Log("NPC INTERAGINDO");
         }
     }
 
