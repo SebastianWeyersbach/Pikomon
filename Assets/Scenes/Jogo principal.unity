@@ -4162,7 +4162,7 @@ MonoBehaviour:
   timer: 0
   layerInteragivel:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 1024
 --- !u!143 &1574866787
 CharacterController:
   m_ObjectHideFlags: 0
@@ -5314,6 +5314,7 @@ GameObject:
   - component: {fileID: 1816737598}
   - component: {fileID: 1816737597}
   - component: {fileID: 1816737596}
+  - component: {fileID: 1816737600}
   m_Layer: 10
   m_Name: BotzinhoKappaKappa
   m_TagString: Untagged
@@ -5464,6 +5465,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1816737600
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1816737593}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d2996341ac2088240a33326bfcde305a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1829471279
 GameObject:
   m_ObjectHideFlags: 0

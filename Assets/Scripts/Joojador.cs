@@ -100,7 +100,10 @@ public class Joojador : MonoBehaviour
         var colisores = Physics.OverlapSphere(PosInteracao, 0.3f, layerInteragivel);
         if(colisores != null)
         {
-            Debug.Log("NPC INTERAGINDO");
+            foreach(var colisor in colisores)
+            {
+                colisor.GetComponent<Interagiveis>()?.interagir();
+            }
         }
     }
 
