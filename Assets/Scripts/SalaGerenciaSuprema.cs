@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum EstadoJogo { Livre, Batalha};
+public enum EstadoJogo { Livre, Batalha, Dialogo};
 
 public class SalaGerenciaSuprema : MonoBehaviour
 {
@@ -20,7 +20,25 @@ public class SalaGerenciaSuprema : MonoBehaviour
         estado = EstadoJogo.Livre;
         ControleJogador.NoEncontro += ComecarBatalha;
         sistemaBatalha.FimBatalha += TerminarBatalha;
+
+        GerenteDlalogadorFinal.Instancia.DialogoEntrando += () =>
+        {
+            estado = EstadoJogo.Dialogo;
+        };
+        /*
+          Nesse caso precisa de ";" porque no LAMBDA você já está criando e chamando a função ao mesmo tempo. 
+          Quando você simplesmente cria a função (tipo esse start ou o update) eles estão simplesmente ali, ele não está necessariamente sendo chamado nesse script. 
+          O que o LAMBDA faz seria criar, chamar e apagar essa função em uma só, e por isso precisa do ; , afinal o ; serve justamente para quando se chama uma função.
         
+        */    
+    GerenteDlalogadorFinal.Instancia.DialogoSaindo += () =>
+        {
+            if(estado == EstadoJogo.Dialogo)
+            {
+                estado = EstadoJogo.Livre;
+            }
+        };
+
     }
 
     void Update()
